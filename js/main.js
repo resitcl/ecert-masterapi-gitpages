@@ -510,119 +510,57 @@ app.bg = {
 
 app.common = {
   init: function() {
-    var applyArticlesMinHeight;
-    applyArticlesMinHeight = function() {
-      return $("section").each(function() {
-        var articles, minheight, products, section;
-        section = $(this);
-        articles = section.find("article");
-        products = $(this).hasClass("section--products");
-        if (products === false) {
-          minheight = 0;
-          articles.attr("style", "");
-          articles.each(function() {
-            var article, height;
-            article = $(this);
-            height = article.outerHeight();
-            if (height > minheight) {
-              return minheight = height;
-            }
-          });
-          return articles.css({
-            'min-height': minheight + "px"
-          });
-        }
-      });
-    };
-    applyArticlesMinHeight();
-    setTimeout(function() {
-      applyArticlesMinHeight();
-      return app.isotope.init();
-    }, 1000);
-    $(window).on('resize', function() {
-      return applyArticlesMinHeight();
-    });
-    $(".header__item--search--mobile").click(function(e) {
-      e.preventDefault();
-      $("header").addClass("header--search-in");
-      return setTimeout(function() {
-        return $(".header__search input").focus();
-      }, 100);
-    });
-    $(".header__search input").blur(function() {
-      $("header").addClass("header--search-out");
-      return setTimeout(function() {
-        return $("header").removeClass("header--search-in header--search-out");
-      }, 400);
-    });
-    $('.radio-options').change(function() {
-      $(".article--option").removeClass("article--option--checked");
-      $(".article--option").find(".article__content .btn").text("Seleccionar Producto");
-      $(this).parents(".article--option").addClass("article--option--checked");
-      return $(this).parents(".article__body").find(".btn").text("Ir al carro de compras");
-    });
-    $('.radio-options-2').change(function() {
-      $(".article--option").removeClass("article--option--checked");
-      $(".article--option").find(".article__footer .btn").text("Seleccionar Producto");
-      $(this).parents(".article--option").addClass("article--option--checked");
-      return $(this).parents(".article__body").find(".btn").text("Ir al carro de compras");
-    });
-    $('.options_payment').change(function() {
-      return $('.options_payment').each(function() {
-        if ($(this).is(':checked')) {
-          return $(this).parents(".section__payment__option").addClass('section__payment__option--selected');
-        } else {
-          return $(this).parents(".section__payment__option").removeClass('section__payment__option--selected');
-        }
-      });
-    });
-    if ($('body .section--cart .section__products .article--productcart').length === 0) {
-      $(".section--cart .section__buttons .btn--nextcart").addClass("btn--blocked");
-      $('.btn--nextcart').click(function(e) {
-        return e.preventDefault();
-      });
-    }
-    $("[data-more-boxs]").click(function(e) {
-      var html;
-      e.preventDefault();
-      if ($(this).parents(".section__wrap").find(".section__body .section__moreboxs").hasClass("section__moreboxs--show")) {
-        $(this).parents(".section__wrap").find(".section__body .section__moreboxs").removeClass("section__moreboxs--show");
-        $(this).text("Cargar más");
-        html = "<span class='fa fa-plus'></span>";
-        $(this).append(html);
-        return setTimeout(function() {
-          return app.isotope.init();
-        }, 300);
+    $('.form__icon__eye').click(function() {
+      var $passwordInput, _this;
+      _this = $(this);
+      $passwordInput = $(this).parents('.form__input').find('input');
+      if ($passwordInput.attr("type") === "password") {
+        $passwordInput.attr("type", 'text');
+        $(".form__input--2").addClass('show');
+        return _this.removeClass('show');
       } else {
-        $(this).parents(".section__wrap").find(".section__body .section__moreboxs").addClass("section__moreboxs--show");
-        $(this).text("Cargar menos");
-        html = "<span class='fa fa-minus'></span>";
-        $(this).append(html);
-        return setTimeout(function() {
-          return app.isotope.init();
-        }, 300);
+        $passwordInput.attr("type", 'password');
+        _this.removeClass('show');
+        return $(".form__input--1").addClass('show');
       }
     });
-    if (app.isMobile === true) {
-      app.modal.open(".modal--blockfao");
-    }
-    $("[data-next-revocation]").click(function(e) {
-      e.preventDefault();
+    $("[data-next-step]").click(function(e) {
+      var form, formvalidation;
       app.loader["in"]($(".section__loader"));
-      return setTimeout(function() {
-        $(".section__revocation--1").removeClass("section__revocation--show");
-        $(".section__revocation--2").addClass("section__revocation--show");
+      form = $(".section__form--show");
+      formvalidation = app.form.validateGroup(form);
+      if (formvalidation === true) {
+        form.removeClass("section__form--show");
+        $(".section__form--hide").addClass("section__form--show");
+        $(".section__form--hide").removeClass("section__form--hide");
+        form.addClass("section__form--hide");
         return app.loader.out($(".section__loader"));
-      }, 1000);
+      } else {
+        return app.loader.out($(".section__loader"));
+      }
     });
-    return $("[data-prev-revocation]").click(function(e) {
+    $("[data-prev-step]").click(function(e) {
+      var form;
+      app.loader["in"]($(".section__loader"));
+      form = $(".section__form--show");
+      form.removeClass("section__form--show");
+      $(".section__form--hide").addClass("section__form--show");
+      $(".section__form--hide").removeClass("section__form--hide");
+      form.addClass("section__form--hide");
+      return app.loader.out($(".section__loader"));
+    });
+    return $(".form--user").submit(function(e) {
+      var form, formvalidation;
       e.preventDefault();
       app.loader["in"]($(".section__loader"));
-      return setTimeout(function() {
-        $(".section__revocation--2").removeClass("section__revocation--show");
-        $(".section__revocation--1").addClass("section__revocation--show");
+      form = $(this);
+      formvalidation = app.form.validateGroup(form);
+      if (formvalidation === true) {
+        app.loader.out($(".section__loader"));
+        return console.log("formulario validado");
+      } else {
         return app.loader.out($(".section__loader"));
-      }, 1000);
+      }
     });
   }
 };
@@ -655,7 +593,7 @@ app.form = {
   validateGroup: function(container) {
     var pass;
     pass = true;
-    container.find(app.form.classes.required).each(function() {
+    container.find(app.form.classes.item).each(function() {
       if (!app.form.validate($(this))) {
         pass = false;
       }

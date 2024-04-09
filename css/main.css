@@ -1567,9 +1567,9 @@ article.article--item .article__body .article--tag {
 }
 @media (min-width: 720px) {
   .btn {
-    font-size: 18px;
-    line-height: 24px;
-    padding: 10px 30px;
+    font-size: 16px;
+    line-height: 22px;
+    padding: 7px 30px;
     min-width: 200px;
   }
 }
@@ -2098,7 +2098,7 @@ select,
 textarea {
   display: block;
   width: 100%;
-  padding: 7px 10px;
+  padding: 5px 10px;
   vertical-align: top;
   background: #fff;
   -moz-box-sizing: border-box;
@@ -2204,6 +2204,10 @@ textarea {
 }
 .form__element:hover {
   cursor: text;
+}
+.form__element.form__element--md {
+  max-width: 400px;
+  margin: 0 auto;
 }
 .form__element.form__element--required .form__title:after {
   content: "*";
@@ -2384,6 +2388,21 @@ textarea {
     padding-left: 20px;
   }
 }
+.form__element .form__input .form__icon__eyes {
+  position: absolute;
+  top: 3px;
+  right: 20px;
+  cursor: pointer;
+}
+.form__element .form__input .form__icon__eyes .form__icon__eye {
+  display: none;
+}
+.form__element .form__input .form__icon__eyes .form__icon__eye img {
+  width: 30px;
+}
+.form__element .form__input .form__icon__eyes .form__icon__eye.show {
+  display: block;
+}
 .form__element .form__select {
   position: relative;
   border-bottom: 1px solid #f2f2f2;
@@ -2431,6 +2450,9 @@ textarea {
 }
 .form__c {
   margin-bottom: 20px;
+}
+.form__button {
+  margin-top: 10px;
 }
 .form__options {
   display: -ms-flexbox;
@@ -2953,7 +2975,7 @@ section .section__loader .loader {
   top: 0;
   left: 0;
   z-index: 5;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.6);
 }
 section .section__header {
   position: relative;
@@ -3197,6 +3219,31 @@ section.section--main .section__wrap .section__body {
   position: relative;
   height: 100vh;
 }
+section.section--main .section__wrap .section__body .section__card {
+  margin: 0 auto;
+  border-radius: 20px;
+  margin-top: 20px;
+  background: #fff;
+  box-shadow: 0px 0px 8px 0px #bebebe, -20px -20px 60px #fff;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-align: center;
+      align-items: center;
+  padding: 10px;
+  max-width: 400px;
+}
+section.section--main .section__wrap .section__body .section__card .section__img {
+  width: 215px;
+}
+section.section--main .section__wrap .section__body .section__card .section__description {
+  margin: 0px;
+}
+section.section--main .section__wrap .section__body .section__card .section__title {
+  font-weight: bold;
+  font-size: 18px;
+}
 section.section--main .section__wrap .section__body .section__form {
   position: initial;
   text-align: center;
@@ -3211,15 +3258,26 @@ section.section--main .section__wrap .section__body .section__form {
   height: 100vh;
 }
 section.section--main .section__wrap .section__body .section__form .section__form__header {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  max-width: 400px;
+  padding: 10px 10px;
+  text-align: center;
+  background-color: #25215f;
 }
-section.section--main .section__wrap .section__body .section__form .section__form__header .section__form__header__content {
-  margin-bottom: 60px;
+section.section--main .section__wrap .section__body .section__form .section__form__header .section__form__logo img {
+  max-width: 80px;
 }
 section.section--main .section__wrap .section__body .section__form .section__form__body {
   width: 100%;
+  max-width: 400px;
+}
+section.section--main .section__wrap .section__body .section__form .section__form__body.section__form__body--lg {
   max-width: 800px;
+}
+section.section--main .section__wrap .section__body .section__form .section__form__body .section__form__body__content {
+  margin-bottom: 20px;
 }
 section.section--main .section__wrap .section__body .section__form .section__form__body .section__message {
   background-color: #f2f2f2;
@@ -3228,6 +3286,13 @@ section.section--main .section__wrap .section__body .section__form .section__for
   color: #4f2b83;
   font-weight: 600;
   display: inline-block;
+}
+section.section--main .section__wrap .section__body .section__form .section__form__body .section__payment {
+  margin-top: 200px;
+}
+section.section--main .section__wrap .section__body .section__form .section__form__body .section__payment a {
+  color: #4f2b83;
+  font-weight: bold;
 }
 section.section--main .section__wrap .section__body .section__form .section__form__table {
   text-align: left;
@@ -3251,6 +3316,8 @@ section.section--main .section__wrap .section__body .section__form .section__for
   line-height: 22px;
 }
 section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item {
+  overflow: hidden;
+  position: relative;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
@@ -3259,6 +3326,15 @@ section.section--main .section__wrap .section__body .section__form .section__for
   background-color: #f2f2f2;
   border-radius: 7px;
   margin-bottom: 10px;
+}
+section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 7px;
+  height: 100%;
+  background-color: #25215f;
 }
 section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item .section__form__table__item__company,
 section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item .section__form__table__item__vigencia,
@@ -3277,10 +3353,13 @@ section.section--main .section__wrap .section__body .section__form .section__for
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 25px 20px;
+  padding: 15px 10px;
   text-align: center;
   background-color: #f2f2f2;
-  border-bottom: 10px solid #b01f8c;
+  border-bottom: 5px solid #b01f8c;
+}
+section.section--main .section__wrap .section__body .section__form .section__form__footer .btn:first-child {
+  margin-right: 10px;
 }
 /*!
  *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome

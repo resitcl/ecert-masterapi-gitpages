@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <link href="img/favicon.png" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="css/main.css?v=82783" rel="stylesheet" type="text/css">
-    <script src="js/main.js?v=82783" type="text/javascript"></script>
+    <link href="css/main.css?v=16298" rel="stylesheet" type="text/css">
+    <script src="js/main.js?v=16298" type="text/javascript"></script>
     <!-- Meta tags facebook-->
     <meta property="og:title" content="#">
     <meta property="og:description" content="#">
@@ -20,30 +20,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
   </head>
   <body>
-    <header>
-      <div class="header__wrap">
-        <div class="header__inner">
-          <div class="header__logo"><a href="index.html"><img src="img/icons/logo-ecert-white.svg"></a></div>
-        </div>
-      </div>
-    </header>
     <div id="sections">
       <section class="section--main">
+        <div class="section__loader"></div>
         <div class="section__wrap">
           <div class="section__body">
-            <form class="form">
+            <form class="form form--validation form--user">
               <div class="section__form">
                 <div class="section__form__header">
-                  <h3 class="section__title">Ingresa tu RUN</h3>
+                  <div class="section__form__logo"><img src="img/icons/logo-ecert-white.svg"></div>
+                </div>
+                <div class="section__form__body">
+                  <div class="section__form__body__content">
+                    <h3 class="section__title">Ingresa tu RUN</h3>
+                  </div>
                   <div class="form__element">
                     <div class="form__title">RUN:</div>
-                    <div class="form__input"> 
-                      <input type="rut" name="#" placeholder="Ej: 12.345.678-9">
+                    <div class="form__input">
+                      <input type="rut" name="#" placeholder="Ej: 12.345.678-9" class="input-rut">
                     </div>
                   </div>
                 </div>
                 <div class="section__form__footer">
-                  <div class="section__button"> 
+                  <div class="section__button"> <a data-next-step class="btn">Continuar</a></div>
+                </div>
+              </div>
+              <div class="section__form section__form--hide">
+                <div class="section__form__header">
+                  <div class="section__form__logo"><img src="img/icons/logo-ecert-white.svg"></div>
+                </div>
+                <div class="section__form__body">
+                  <div class="section__form__body__content">
+                    <h3 class="section__title">Contraseña</h3>
+                    <p>Ingrese la contraseña de tu Portal Empresas.</p>
+                  </div>
+                  <div class="form__element">
+                    <div class="form__title">Contraseña:</div>
+                    <div class="form__input"> 
+                      <input type="password" name="#">
+                    </div>
+                  </div>
+                  <div class="form__button"><a href="#" class="btn btn--link">¿Olvidaste tu contraseña?</a></div>
+                </div>
+                <div class="section__form__footer">
+                  <div class="section__button"> <a data-prev-step class="btn btn--gray">Volver</a>
                     <button class="btn">Continuar</button>
                   </div>
                 </div>

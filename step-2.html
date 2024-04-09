@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <link href="img/favicon.png" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href="css/main.css?v=33709" rel="stylesheet" type="text/css">
-    <script src="js/main.js?v=33709" type="text/javascript"></script>
+    <link href="css/main.css?v=97737" rel="stylesheet" type="text/css">
+    <script src="js/main.js?v=97737" type="text/javascript"></script>
     <!-- Meta tags facebook-->
     <meta property="og:title" content="#">
     <meta property="og:description" content="#">
@@ -20,13 +20,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400&display=swap" rel="stylesheet">
   </head>
   <body>
-    <header>
-      <div class="header__wrap">
-        <div class="header__inner">
-          <div class="header__logo"><a href="index.html"><img src="img/icons/logo-ecert-white.svg"></a></div>
-        </div>
-      </div>
-    </header>
     <div id="sections">
       <section class="section--main">
         <div class="section__wrap">
@@ -34,7 +27,10 @@
             <form class="form">
               <div class="section__form">
                 <div class="section__form__header">
-                  <div class="section__form__header__content">
+                  <div class="section__form__logo"><img src="img/icons/logo-ecert-white.svg"></div>
+                </div>
+                <div class="section__form__body">
+                  <div class="section__form__body__content">
                     <h3 class="section__title">Contraseña</h3>
                     <p>Ingrese la contraseña de tu Portal Empresas.</p>
                   </div>
@@ -42,14 +38,16 @@
                     <div class="form__title">Contraseña:</div>
                     <div class="form__input"> 
                       <input type="password" name="#">
+                      <div class="form__icon__eyes">
+                        <div class="form__icon__eye form__input--1 show"><img src="img/icons/icon-eye-1.png"></div>
+                        <div class="form__icon__eye form__input--2"><img src="img/icons/icon-eye-2.png"></div>
+                      </div>
                     </div>
                   </div>
-                  <div class="form__element">
-                    <div class="form__button"><a href="#" class="btn btn--link">¿Olvidaste tu contraseña?</a></div>
-                  </div>
+                  <div class="form__button"><a href="#" class="btn btn--link">¿Olvidaste tu contraseña?</a></div>
                 </div>
                 <div class="section__form__footer">
-                  <div class="section__button"> 
+                  <div class="section__button"> <a data-prev-step class="btn btn--gray">Volver</a>
                     <button class="btn">Continuar</button>
                   </div>
                 </div>
