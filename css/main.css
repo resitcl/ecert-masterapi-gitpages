@@ -38,6 +38,7 @@
 html {
   min-height: 100%;
   position: relative;
+  overflow: hidden;
 }
 body {
   -webkit-font-smoothing: antialiased;
@@ -1571,6 +1572,7 @@ article.article--item .article__body .article--tag {
     line-height: 22px;
     padding: 7px 30px;
     min-width: 200px;
+    max-width: 200px;
   }
 }
 .btn span {
@@ -2281,7 +2283,7 @@ textarea {
 .form__element .form__tooltip {
   position: absolute;
   top: 0;
-  right: 40px;
+  right: 0px;
   z-index: 5;
   cursor: pointer;
   display: inline-block;
@@ -2319,15 +2321,25 @@ textarea {
 .form__element .form__tooltip .form__tooltip__tooltip {
   display: none;
   position: absolute;
-  top: 100%;
-  right: 0;
+  top: initial;
+  bottom: -100px;
+  right: 20px;
   width: 250px;
   padding: 10px;
   background-color: #fff;
   box-shadow: 0px 0px 6px rgba(0,0,0,0.102);
   border: 1px solid #e5e5e5;
   color: #212121;
-  border-radius: 5px;
+  border-radius: 20px;
+  background: #fff;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  padding: 10px;
+  max-width: 400px;
 }
 @media (min-width: 720px) {
   .form__element .form__tooltip .form__tooltip__tooltip {
@@ -2342,7 +2354,7 @@ textarea {
 .form__element .form__tooltip .form__tooltip__tooltip h3,
 .form__element .form__tooltip .form__tooltip__tooltip h4,
 .form__element .form__tooltip .form__tooltip__tooltip h5 {
-  color: #b01f8c;
+  color: #25215f;
 }
 .form__element .form__tooltip .form__tooltip__tooltip p {
   font-size: 14px;
@@ -2350,6 +2362,17 @@ textarea {
 }
 .form__element .form__tooltip .form__tooltip__tooltip ul li {
   color: #212121;
+}
+.form__element .form__tooltip .form__tooltip__tooltip .form__img {
+  width: 200px;
+  margin: 0 auto;
+}
+.form__element .form__tooltip .form__tooltip__tooltip .form__description {
+  margin: 0px;
+}
+.form__element .form__tooltip .form__tooltip__tooltip .form__title {
+  font-weight: bold;
+  font-size: 18px;
 }
 .form__element .form__title__notfocus {
   top: 0;
@@ -3300,15 +3323,24 @@ section.section--main .section__wrap .section__body .section__form .section__for
 section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__header {
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: justify;
-      justify-content: space-between;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
   padding: 10px;
 }
 section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__header .section__form__table__item {
   width: 100%;
+  max-width: 200px;
 }
 section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__header .section__form__table__item.section__form__table__item--checkbock {
-  max-width: 110px;
+  max-width: 100px;
+}
+section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__header .section__form__table__item:nth-child(2) {
+  width: 100%;
+  max-width: 160px;
+}
+section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__header .section__form__table__item:nth-child(3) {
+  width: 100%;
+  max-width: 240px;
 }
 section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__header .section__form__table__item span {
   color: #25215f;
@@ -3320,8 +3352,8 @@ section.section--main .section__wrap .section__body .section__form .section__for
   position: relative;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
   padding: 10px;
   background-color: #f2f2f2;
   border-radius: 7px;
@@ -3336,13 +3368,37 @@ section.section--main .section__wrap .section__body .section__form .section__for
   height: 100%;
   background-color: #25215f;
 }
-section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item .section__form__table__item__company,
-section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item .section__form__table__item__vigencia,
-section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item .section__form__table__item__type {
-  padding: 0px 20px;
+section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item .section__form__table__item__checkbox {
+  width: 100%;
+  max-width: 100px;
+  text-align: center;
 }
-section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item .section__form__table__item__company span,
-section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item .section__form__table__item__vigencia span,
+section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item .section__form__table__item__checkbox input {
+  position: relative;
+  right: 20px;
+}
+section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item .section__form__table__item__company {
+  width: 100%;
+  max-width: 160px;
+}
+section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item .section__form__table__item__company span {
+  color: #76777a;
+  font-size: 14px;
+  line-height: 22px;
+}
+section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item .section__form__table__item__vigencia {
+  width: 100%;
+  max-width: 200px;
+}
+section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item .section__form__table__item__vigencia span {
+  color: #76777a;
+  font-size: 14px;
+  line-height: 22px;
+}
+section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item .section__form__table__item__type {
+  width: 100%;
+  max-width: 240px;
+}
 section.section--main .section__wrap .section__body .section__form .section__form__table .section__form__table__body .section__form__table__item .section__form__table__item__type span {
   color: #76777a;
   font-size: 14px;
